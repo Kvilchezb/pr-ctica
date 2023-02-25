@@ -1,0 +1,29 @@
+/*Las líneas 2 y 3 están en comentarios, para usarse así la primera vez... luego de eso se quitan los comentarios para que todo funcione bien, en las siguientes ejecuciones */
+/*drop schema práctica ;
+drop user usuario_practica;*/
+
+/*Se crea la base de datos */
+CREATE SCHEMA práctica ;
+/*Se crea un usuario para la base de datos llamado "usuario_prueba" y tiene la contraseña "Usuario_Clave."*/
+create user 'usuario_practica'@'localhost' identified by 'la_Clave';
+/*Se asignan los prvilegios sobr ela base de datos TechShop al usuario creado */
+grant all privileges on práctica.* to 'usuario_practica'@'localhost';
+flush privileges;
+
+/*Se crea la tabla de clientes llamada cliente... igual que la clase Cliente */
+CREATE TABLE práctica.estado (
+  id_Pais INT NOT NULL AUTO_INCREMENT,
+  N_Pais VARCHAR(20) NOT NULL,
+  N_Capital VARCHAR(40) NOT NULL,
+  Nu_Poblacion VARCHAR(40) NULL,
+  N_Moneda VARCHAR(40) NULL,
+  PRIMARY KEY (`id_Pais`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_eo_0900_ai_ci;
+
+/*Se insertan 3 registros en la tabla cliente como ejemplo */
+INSERT INTO práctica.estado (id_Pais, N_Pais, N_Capital, Nu_Poblacion, N_Moneda) VALUES 
+(1,'Estados Unidos', 'Washington D. C.', '331,9 millones', 'Dólar Estadounidense'),
+(2,'Cánada', 'Ottawa', '38,25 millones', 'Dólar canadiense'),
+(3,'Costa Rica', 'San josé', '5,154 millones', 'Colones');
